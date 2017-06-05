@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}{{ todolist_name }}{% endblock %}
+
+{% block body_block %}
+  {% if user.is_authenticated %}
+    {% if todolist %}
+    <h1>{{ todolist_name }}</h1>
+    <div class="contentBox">
+      {% if tasks %}
+        <div id="tasks">
+
+          <span class="sortLabel">sort by:</span>
+          <span class="sortLabel">due date</span>
+          <span class="sort asc" data-listid="{{ todolist.id }}" data-sorttype="date"></span>
+          <span class="sort desc" data-listid="{{ todolist.id }}" data-sorttype="-date"></span>
+          <span class="sortLabel">priority</span>
+          <span class="sort asc" data-listid="{{ todolist.id }}" data-sorttype="priority"></span>
+          <span class="sort desc" data-listid="{{ todolist.id }}" data-sorttype="-priority"></span>
+
+          <table>
+            {% for task in tasks %}
+              <tr class="task">
+                <td class="taskInfo">{{ task.date }} | {{ task.name }}, priority: {{ task.get_priority_display }}
+                </td>
+                <td class="deleteButton">
+                <span class="deleteTask" data-listid="{{ todolist.id }}" data-taskid="{{ task.id }}"></span>
+                </td>
+              </tr>
+              <tr class="note">
+                <td class="taskNote"><strong>-</strong> {{ task.note }}</td>
+              </tr>
+            {% endfor %}
+          </table>
+        </div>
+      {% else %}
+        <strong>No tasks currently in todolist.</strong>
+      {% endif %}
+
+      <a class="textlink" href="{% url 'create_task' todolist.user todolist.slug %}">Create a Task</a><br />
+    {% else %}
+      <p>You can't access this list.</p>
+    {% endif %}
+  </div>
+  {% else %}
+    <a href="{% url 'registration_register' %}">Sign Up<a> or <a href="{% url 'auth_login' %}">Log In</a> to see lists.
+  {% endif %}
+{% endblock %}

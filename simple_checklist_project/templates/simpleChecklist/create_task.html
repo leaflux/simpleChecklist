@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}New Task{% endblock %}
+
+{% block body_block %}
+  <script src="{% static 'js/formlabels.js' %}"></script>
+  {% if user.is_authenticated %}
+  <div class="contentBox">
+    <h1>Create a new task</h1>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+    $(function () {
+      $("#id_date").datepicker();
+    });
+    </script>
+    <form action="." method="POST">
+
+      {% csrf_token %}
+      {% for hidden in form.hidden_fields %}
+        {{ hidden }}
+      {% endfor %}
+
+      {% for field in form.visible_fields %}
+        {{ field.errors }}
+        {{ field.help_text }}
+        <p>{{ field }}</p>
+      {% endfor %}
+
+      <input type="submit" name="submit" value="Submit Task" />
+    </form>
+
+  {% else %}
+    <a href="{% url 'registration_register' %}">Sign Up<a> or <a href="{% url 'auth_login' %}">Log In</a> to create tasks.
+  {% endif %}
+</div>
+{% endblock %}

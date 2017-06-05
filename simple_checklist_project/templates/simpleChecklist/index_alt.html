@@ -1,0 +1,20 @@
+{% load staticfiles %}
+
+<script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+<script src='{% static "js/simpleChecklist-jQuery.js" %}'></script>
+
+{% if todolists %}
+  <div id="lists">
+    <ul>
+      {% for todolist in todolists %}
+      <li class="todolist">
+        {{ todolist.created_on }} |
+        <a class="listName" href="{% url 'todolist' todolist.user todolist.slug %}">{{ todolist.name }}</a>
+        <span class="deleteList" data-listid="{{ todolist.id }}"></span>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% else %}
+  <strong>You don't have any lists.</strong>
+{% endif %}

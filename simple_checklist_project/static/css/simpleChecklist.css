@@ -1,0 +1,254 @@
+/* base.html's elements, along with some misc elements found on most pages */
+* {
+  font-family: Helvetica;
+  font-size: 100%;
+  text-align: center;
+}
+
+body {
+  background-color: #EBEFEC;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li a {
+  text-decoration: none;
+}
+
+ul#navbar {
+  position: fixed;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  width: 13em;
+}
+
+ul#navbar li a {
+  text-align: left;
+  display: block;
+  background-color: #8BDE8B;
+  color: black;
+  padding: .5em 1em;
+}
+
+ul#navbar li a:hover {
+  background-color: #3CAB3C;
+}
+
+h1 {
+  font-size: 150%;
+}
+
+.textlink {
+  color: #7EC0EE;
+}
+
+.textlink:hover {
+  color: blue;
+}
+
+div.contentBox {
+  position: relative;
+  background-color: white;
+  border: 1px solid silver;
+  padding: 10px 0;
+  margin: auto;
+  width: 60%;
+  border-radius: 3px;
+  box-shadow: 2px 2px 5px #888888;
+}
+
+/* form elements for login, registration, and the list & task forms */
+label {
+  float: left;
+  margin-left: 3em;
+}
+
+input, textarea {
+  text-align: left;
+  border: 1px solid black;
+}
+
+input[type=text], textarea {
+  width: 90%;
+}
+
+input[type=password] {
+  width: 90%;
+}
+
+input[type=email] {
+  width: 90%;
+}
+
+input[type=submit] {
+  background: linear-gradient(to bottom, #B7EEB7 0%, #8BDE8B 100%);
+  padding: .3em 2em;
+  border-radius: .2em;
+  text-align: center;
+}
+
+input[type=submit]:hover {
+  background: linear-gradient(to bottom, #8BDE8B 0%, #3CAB3C 100%);
+}
+
+input[type=date] {
+  position: relative;
+  right: 15.5em;
+}
+
+select {
+  position: relative;
+  right: 18.5em;
+}
+
+/* This is all for the datepicker, which I used jQuery UI for */
+
+.ui-datepicker {
+  border: 1px solid silver;
+  box-shadow: 2px 2px 5px #888888;
+}
+
+.ui-datepicker a {
+  text-decoration: none;
+}
+
+.ui-datepicker table {
+  width: 100%;
+}
+
+.ui-datepicker-header {
+  background: linear-gradient(to bottom, #B7EEB7 0%, #8BDE8B 100%);
+  font-weight: bold;
+}
+
+.ui-datepicker-prev {
+  background-image: url("../images/arrow-left.png");
+  background-repeat: no-repeat;
+  float: left;
+  background-position: center 0px;
+}
+
+.ui-datepicker-next {
+  background-image: url("../images/arrow-right.png");
+  background-repeat: no-repeat;
+  float: right;
+  background-position: center 0px;
+}
+
+.ui-datepicker-next, .ui-datepicker-prev {
+  display: inline-block;
+  width: .66em;
+  height: .66em;
+  cursor: pointer;
+  line-height: 500%;
+  overflow: hidden;
+  margin: .25em;
+}
+
+.ui-datepicker th {
+  font-weight: normal;
+}
+
+.ui-datepicker-calendar {
+  background: white;
+}
+
+.ui-datepicker td a {
+  color: #7EC0EE;
+}
+
+.ui-datepicker td a:hover {
+  color: blue;
+}
+
+/* Elements on the todolist list (index.html) and task list (todolist.html) pages */
+li.todolist {
+  text-align: left;
+  margin-bottom: 1em;
+}
+
+span.deleteList {
+  background: url("../images/deleteicon.png");
+  vertical-align: text-top;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 1em;
+}
+
+span.deleteList:hover {
+  background-position: bottom;
+}
+
+a.listName {
+  color: #8BDE8B;
+}
+
+a.listName:hover {
+  color: #3CAB3C;
+}
+
+
+tr.task, tr.note {
+  left: 1em;
+  height: 30px;
+  width: 100%;
+}
+
+td.taskInfo, td.taskNote, td.deleteButton {
+  position: absolute;
+  text-align: left;
+}
+
+td.taskInfo {
+  left: 1em;
+}
+
+td.taskNote {
+  left: 2em;
+}
+
+td.deleteButton {
+  right: 1em;
+}
+
+span.deleteTask {
+  display: block;
+  background: url("../images/deleteicon.png");
+  vertical-align: text-top;
+  width: 20px;
+  height: 20px;
+}
+
+span.deleteTask:hover {
+  background-position: bottom;
+}
+
+span.sortLabel {
+  font-size: 80%;
+}
+
+span.sort {
+  display: inline-block;
+  vertical-align: text-top;
+}
+
+span.asc {
+  background: url("../images/uparrowicon.png");
+  height: 17px;
+  width: 19px;
+}
+
+span.desc {
+  background: url("../images/downarrowicon.png");
+  height: 17px;
+  width: 19px;
+  margin-right: 1em;
+}
+
+span.sort:hover {
+  background-position: bottom;
+}

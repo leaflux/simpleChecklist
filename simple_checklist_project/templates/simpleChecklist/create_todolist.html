@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}New List{% endblock %}
+
+{% block body_block %}
+  <script src="{% static 'js/formlabels.js' %}"></script>
+  <div class="contentBox">
+  {% if user.is_authenticated %}
+
+    <h1>Create a new list</h1>
+
+    <form action="." method="POST">
+
+      {% csrf_token %}
+      {% for hidden in form.hidden_fields %}
+        {{ hidden }}
+      {% endfor %}
+
+      {% for field in form.visible_fields %}
+        {{ field.errors }}
+        {{ field.help_text }}
+        {{ field }}
+      {% endfor %}
+
+      <p><input type="submit" name="submit" value="Create List" /></p>
+    </form>
+
+  {% else %}
+    <a href="{% url 'registration_register' %}">Sign Up<a> or <a href="{% url 'auth_login' %}">Log In</a> to create lists.
+  {% endif %}
+</div>
+{% endblock %}

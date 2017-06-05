@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}make an account{% endblock %}
+
+{% load staticfiles %}
+
+{% block body_block %}
+  <script src='{% static "js/redux-fixes.js" %}'></script>
+  <link rel="stylesheet" href="{% static 'css/simpleChecklist.css' %}">
+  <div class="contentBox">
+    <h1>Registration</h1>
+    <form method="POST" action=".">
+      {% csrf_token %}
+      {{ form.as_p }}
+
+      <input type="submit" value="Sign Up" />
+    </form>
+  </div>
+{% endblock %}
